@@ -8,7 +8,7 @@ class Question extends Component {
         const { question } = this.props;
         
         const {
-            name, id, timestamp, avatar, optionOne, optionTwo
+            name, id, avatar, optionOne
         } = question;
 
         return (
@@ -24,7 +24,7 @@ class Question extends Component {
                             <Row>
                                 <Col></Col>
                                 <Col>
-                                    <img src={avatar} className="avatar" />
+                                    <img src={avatar} className="avatar" alt="avatar" />
                                 </Col>
                                 <Col></Col>
                             </Row>
@@ -44,7 +44,7 @@ class Question extends Component {
                                     </Row>
                                     <Row>
                                         <Col>
-                                            <button className="question-botton">View Poll</button>
+                                            <button className="question-botton" onClick={() => console.log("Question ID: ", id)}>View Poll</button>
                                         </Col>
                                     </Row>
                                 </Col>
