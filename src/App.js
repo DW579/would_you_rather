@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleInitialData } from "./actions/shared";
 import Dashboard from "./components/dashboard";
+import { Container, Row, Col } from "react-bootstrap";
 
 class App extends Component {
     componentDidMount() {
@@ -11,9 +12,15 @@ class App extends Component {
     render() {
         return (
           <div>
-            {this.props.loading === true
-              ? null
-              : <Dashboard />}
+            <Container>
+              <Row>
+                <Col>
+                  {this.props.loading === true
+                    ? null
+                    : <Dashboard />}
+                </Col>
+              </Row>
+            </Container>
           </div>
         )
     }
