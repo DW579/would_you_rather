@@ -8,13 +8,9 @@ class Dashboard extends Component {
         return (
             <div>
                 <h1>All Questions</h1>
-                <ul>
-                    {this.props.questionIds.map((id) => (
-                        <li key={id}>
-                            <Question id={id}/>
-                        </li>
-                    ))}
-                </ul>
+                {this.props.questionIds.map((id) => (
+                    <Question key={id} id={id}/>
+                ))}
 
                 <h1>Unanswered Questions</h1>
 
