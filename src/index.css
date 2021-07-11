@@ -1,3 +1,45 @@
+/* Question List */
+.question-unanswered {
+  border-top: 3px solid #264653;
+  border-right: 3px solid #264653;
+  border-left: 3px solid #264653;
+  border-radius: 5px 0 0 0;
+  padding: 10px;
+  color: #000000;
+}
+
+.question-answered {
+  border-top: 3px solid #264653;
+  border-right: 3px solid #264653;
+  border-radius: 0 5px 0 0;
+  padding: 10px;
+  color: #000000;
+}
+
+.question-list-tab:hover {
+  background-color: #2a9d8f;
+  cursor: pointer;
+}
+
+.tab-selected {
+  background-color: #2a9d8f;
+  color: #ffffff;
+}
+
+.tab-title {
+  font-weight: bold;
+}
+
+.question-list-body {
+  border-top: 3px solid #264653;
+  border-right: 3px solid #264653;
+  border-bottom: 3px solid #264653;
+  border-left: 3px solid #264653;
+  padding: 20px;
+  border-radius: 0 0 5px 5px;
+}
+
+/* Question */
 .question {
   margin-bottom: 10px;
 }
