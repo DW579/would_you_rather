@@ -42,6 +42,8 @@ class NewQuestion extends Component {
     render() {
         const { text1, text2 } = this.state;
 
+        // todo: Redirect to / if submitted
+
         return (
             <Row>
                 <Col>
@@ -59,16 +61,19 @@ class NewQuestion extends Component {
                                     placeholder="Enter Option One Text Here"
                                     value={text1}
                                     onChange={this.handleChange1}
+                                    className="create-input"
                                 />
-                                <p>OR</p>
+                                <p className="create-or text-center">OR</p>
                                 <input 
                                     placeholder="Enter Option Two Text Here"
                                     value={text2}
                                     onChange={this.handleChange2}
+                                    className="create-input"
                                 />
                                 <button
                                     type="submit"
                                     disabled={text1 === "" || text2 === ""}
+                                    className="create-button"
                                 >
                                     Submit
                                 </button>
