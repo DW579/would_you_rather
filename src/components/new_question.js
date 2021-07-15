@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Row, Col } from "react-bootstrap";
+import { connect } from "react-redux";
+import { handleAddQuestion } from "../actions/questions";
 
 class NewQuestion extends Component {
     state = {
@@ -27,11 +29,14 @@ class NewQuestion extends Component {
         e.preventDefault();
 
         const { text1, text2 } = this.state;
+        const { dispatch, id } = this.props;
+        const question = {
+            text1,
+            text2,
+            id
+        }
 
-        // todo: Add Question to Store
-
-        console.log("New Question 1: ", text1);
-        console.log("New Question 2: ", text2);
+        dispatch(handleAddQuestion(question));
 
         this.setState(() => ({
             text1: "",
@@ -86,4 +91,4 @@ class NewQuestion extends Component {
     }
 }
 
-export default NewQuestion;
+export default connect()(NewQuestion);
