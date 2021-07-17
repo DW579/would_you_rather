@@ -12,7 +12,7 @@ class QuestionPage extends Component {
             <div>
                 {this.props.answered
                 ? <AnsweredQuestion id={props.id}></AnsweredQuestion>
-                : <AskQuestion id={props.id} name={props.name} optionOne={props.optionOne} optionTwo={props.optionTwo}></AskQuestion>}
+                : <AskQuestion id={props.id} name={props.name} avatar={props.avatar} optionOne={props.optionOne} optionTwo={props.optionTwo}></AskQuestion>}
             </div>
         )
     }
@@ -24,6 +24,7 @@ function mapStateToProps ({ authedUser, questions, users }, props) {
     return {
         id,
         name: users[questions[id].author].name,
+        avatar: users[questions[id].author].avatarURL,
         optionOne: questions[id].optionOne.text,
         optionTwo: questions[id].optionTwo.text,
         answered: questions[id].optionOne.votes.includes(authedUser) || questions[id].optionTwo.votes.includes(authedUser)
