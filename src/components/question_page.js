@@ -1,12 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import AskQuestion from "./question_ask";
+import AnsweredQuestion from "./question_answered";
 
 class QuestionPage extends Component {
     render() {
-        console.log(this.props)
+        const props = this.props;
+
+        console.log(props)
         return (
             <div>
-                Question Page
+                {this.props.answered
+                ? <AnsweredQuestion id={props.id}></AnsweredQuestion>
+                : <AskQuestion id={props.id} name={props.name} optionOne={props.optionOne} optionTwo={props.optionTwo}></AskQuestion>}
             </div>
         )
     }
@@ -17,6 +23,7 @@ function mapStateToProps ({ authedUser, questions, users }, props) {
 
     return {
         id,
+        name: users[questions[id].author].name,
         optionOne: questions[id].optionOne.text,
         optionTwo: questions[id].optionTwo.text,
         answered: questions[id].optionOne.votes.includes(authedUser) || questions[id].optionTwo.votes.includes(authedUser)
