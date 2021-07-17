@@ -19,7 +19,7 @@ class AskQuestion extends Component {
     }
     
     render() {
-        const props = this.props;
+        const { name, avatar, optionOne, optionTwo } = this.props;
 
         return (
             <Row>
@@ -27,7 +27,7 @@ class AskQuestion extends Component {
 
                     <Row className="question-header">
                         <Col>
-                            <h5 className="question-name">{props.name} asks:</h5>
+                            <h5 className="question-name">{name} asks:</h5>
                         </Col>
                     </Row>
 
@@ -36,7 +36,7 @@ class AskQuestion extends Component {
                             <Row>
                                 <Col></Col>
                                 <Col>
-                                    <img src={props.avatar} className="avatar" alt="avatar" />
+                                    <img src={avatar} className="avatar" alt="avatar" />
                                 </Col>
                                 <Col></Col>
                             </Row>
@@ -51,25 +51,19 @@ class AskQuestion extends Component {
                                     </Row>
                                     <Row className="margin-bottom">
                                         <Col>
-                                            {/* <p className="question-text">...{props.optionOne}...</p> */}
                                             <form onSubmit={this.handleSubmit}>
                                                 <input type="radio" id="optionOne" name="questions" value="1" onChange={this.handleChange} />
-                                                <label htmlFor="optionOne">{props.optionOne}</label>
+                                                <label htmlFor="optionOne">{optionOne.text}</label>
 
                                                 <br />
 
                                                 <input type="radio" id="optionTwo" name="questions" value="2" onChange={this.handleChange} />
-                                                <label htmlFor="optionTwo">{props.optionTwo}</label>
+                                                <label htmlFor="optionTwo">{optionTwo.text}</label>
 
                                                 <button type="submit" className="question-botton">Submit</button>
                                             </form>
                                         </Col>
                                     </Row>
-                                    {/* <Row>
-                                        <Col>
-                                            <button className="question-botton" onClick={() => console.log("Question ID: ", props.id)}>Submit</button>
-                                        </Col>
-                                    </Row> */}
                                 </Col>
                             </Row>
                         </Col>

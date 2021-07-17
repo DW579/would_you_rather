@@ -5,14 +5,13 @@ import AnsweredQuestion from "./question_answered";
 
 class QuestionPage extends Component {
     render() {
-        const props = this.props;
+        const { id, name, avatar, optionOne, optionTwo, answered} = this.props;
 
-        console.log(props)
         return (
             <div>
-                {this.props.answered
-                ? <AnsweredQuestion id={props.id}></AnsweredQuestion>
-                : <AskQuestion id={props.id} name={props.name} avatar={props.avatar} optionOne={props.optionOne} optionTwo={props.optionTwo}></AskQuestion>}
+                {answered
+                ? <AnsweredQuestion id={id} name={name} avatar={avatar} optionOne={optionOne} optionTwo={optionTwo}></AnsweredQuestion>
+                : <AskQuestion id={id} name={name} avatar={avatar} optionOne={optionOne} optionTwo={optionTwo}></AskQuestion>}
             </div>
         )
     }
@@ -25,8 +24,16 @@ function mapStateToProps ({ authedUser, questions, users }, props) {
         id,
         name: users[questions[id].author].name,
         avatar: users[questions[id].author].avatarURL,
-        optionOne: questions[id].optionOne.text,
-        optionTwo: questions[id].optionTwo.text,
+        optionOne: {
+            count: questions[id].optionOne.votes.length,
+            text: questions[id].optionOne.text,
+            answered: questions[id].optionOne.votes.includes(authedUser)
+        },
+        optionTwo: {
+            count: questions[id].optionTwo.votes.length,
+            text: questions[id].optionTwo.text,
+            answered: questions[id].optionTwo.votes.includes(authedUser)
+        },
         answered: questions[id].optionOne.votes.includes(authedUser) || questions[id].optionTwo.votes.includes(authedUser)
         ? true
         : false

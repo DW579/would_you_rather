@@ -160,3 +160,26 @@
   margin-top: 30px;
   margin-bottom: 20px;
 }
+
+/* Answered */
+.answered-box {
+  border-top: 3px solid #264653;
+  border-left: 3px solid #264653;
+  border-right: 3px solid #264653;
+  border-bottom: 3px solid #264653;
+  margin-left: 10px;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.voted-box {
+  border-top: 3px solid #2A9D8F;
+  border-left: 3px solid #2A9D8F;
+  border-right: 3px solid #2A9D8F;
+  border-bottom: 3px solid #2A9D8F;
+  margin-left: 10px;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #E9C46A;
+  color: #ffffff;
+}
