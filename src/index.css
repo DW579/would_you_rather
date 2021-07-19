@@ -183,3 +183,27 @@
   background-color: #E9C46A;
   color: #ffffff;
 }
+
+/* User */
+.user-box {
+  border-top: 3px solid #264653;
+  border-left: 3px solid #264653;
+  border-right: 3px solid #264653;
+  border-bottom: 3px solid #264653;
+  margin-left: 10px;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 50px;
+}
+
+.user-avatar {
+  border-right: 3px solid #264653;
+}
+
+.user-info {
+  border-right: 3px solid #264653;
+}
+
+.bottom-border {
+  border-bottom: 3px solid #264653;
+}
