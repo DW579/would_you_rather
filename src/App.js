@@ -5,7 +5,8 @@ import { handleInitialData } from "./actions/shared";
 import { Container, Row, Col } from "react-bootstrap";
 import LoadingBar from "react-redux-loading";
 // import NewQuestion from "./components/new_question";
-import QuestionPage from "./components/question_page";
+// import QuestionPage from "./components/question_page";
+import Leaderboard from "./components/leaderboard";
 
 class App extends Component {
     componentDidMount() {
@@ -19,9 +20,14 @@ class App extends Component {
               <Row>
                 <Col>
                   <LoadingBar />
-                  {this.props.loading === true
+                  {/* {this.props.loading === true
                     ? null
-                    : <QuestionPage match={{ params: { id: "vthrdm985a262al8qx3do" }}} />}
+                    : <QuestionPage match={{ params: { id: "vthrdm985a262al8qx3do" }}} />} */}
+                    {
+                      this.props.loading === true
+                      ? null
+                      : <Leaderboard />
+                    }
                 </Col>
               </Row>
             </Container>
