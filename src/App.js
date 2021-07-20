@@ -6,7 +6,8 @@ import { Container, Row, Col } from "react-bootstrap";
 import LoadingBar from "react-redux-loading";
 // import NewQuestion from "./components/new_question";
 // import QuestionPage from "./components/question_page";
-import Leaderboard from "./components/leaderboard";
+// import Leaderboard from "./components/leaderboard";
+import Login from "./components/login";
 
 class App extends Component {
     componentDidMount() {
@@ -26,7 +27,7 @@ class App extends Component {
                     {
                       this.props.loading === true
                       ? null
-                      : <Leaderboard />
+                      : <Login />
                     }
                 </Col>
               </Row>
