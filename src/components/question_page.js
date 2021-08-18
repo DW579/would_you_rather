@@ -2,9 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import AskQuestion from "./question_ask";
 import AnsweredQuestion from "./question_answered";
+import { Redirect } from "react-router-dom";
 
 class QuestionPage extends Component {
     render() {
+        if(this.props.notFound) {
+            return <Redirect to="/404"/>
+        }
         const { id, name, avatar, optionOne, optionTwo, answered} = this.props;
 
         return (
@@ -18,7 +22,12 @@ class QuestionPage extends Component {
 }
 
 function mapStateToProps ({ authedUser, questions, users }, props) {
+    
     const { id } = props.match.params;
+    
+    if(!questions[id]) {
+        return {notFound: true}
+    }
 
     return {
         id,

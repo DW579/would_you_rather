@@ -2,6 +2,7 @@ import { saveQuestionAnswer } from "../utils/api";
 import { showLoading, hideLoading } from "react-redux-loading";
 
 export const RECEIVE_USERS = "RECEIVE_USERS";
+export const ADD_QUESTION = "ADD_QUESTION";
 export const UPDATE_USER_ANSWERS = "UPDATE_USER_ANSWERS";
 
 export function receiveUsers(users) {
@@ -9,6 +10,13 @@ export function receiveUsers(users) {
         type: RECEIVE_USERS,
         users,
     };
+}
+
+function addQuestion (question) {
+    return {
+        type: ADD_QUESTION,
+        question
+    }
 }
 
 function updateUserAnswer ({ authedUser, qid, answer}) {

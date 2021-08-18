@@ -27,6 +27,7 @@ function mapStateToProps ({ users }) {
 
     // Order users by rank
     for(const key in users) {
+        console.log(users[key].questions)
         const score = Object.keys(users[key].answers).length + users[key].questions.length;
 
         scores.push(score);

@@ -11,6 +11,7 @@ import Leaderboard from "./components/leaderboard";
 import Login from "./components/login";
 import Nav from "./components/nav";
 import Account from "./components/account";
+import NoMatch from "./components/no_match";
 
 class App extends Component {
     componentDidMount() {
@@ -31,10 +32,11 @@ class App extends Component {
                           <Nav />
                           <Account />
                           <Route path="/" exact component={Dashboard} />
-                          <Route path="/question/:id" component={QuestionPage} />
+                          <Route path="/questions/:id" component={QuestionPage} />
                           <Route path="/add" component={NewQuestion} />
                           <Route path="/leaderboard" component={Leaderboard} />
                           <Route path="/login" component={Login} />
+                          <Route path="*" component={NoMatch} />
                         </div>}
                   </Col>
                 </Row>

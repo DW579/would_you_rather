@@ -49,10 +49,10 @@ class QuestionList extends Component {
                     <Row className="question-list-body">
                         <Col>
                             {this.state.unanswered_selected 
-                                ? unanswered_ids.map((id) => (
+                                ? unanswered_ids.sort().map((id) => (
                                     <Question key={id} id={id}/>
                                 ))
-                                : answered_ids.map((id) => (
+                                : answered_ids.sort().map((id) => (
                                     <Question key={id} id={id}/>
                                 ))}
                         </Col>
