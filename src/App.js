@@ -10,6 +10,7 @@ import QuestionPage from "./components/question_page";
 import Leaderboard from "./components/leaderboard";
 import Login from "./components/login";
 import Nav from "./components/nav";
+import Account from "./components/account";
 
 class App extends Component {
     componentDidMount() {
@@ -28,6 +29,7 @@ class App extends Component {
                       ? <Login />
                       : <div>
                           <Nav />
+                          <Account />
                           <Route path="/" exact component={Dashboard} />
                           <Route path="/question/:id" component={QuestionPage} />
                           <Route path="/new" component={NewQuestion} />

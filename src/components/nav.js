@@ -20,7 +20,9 @@ export default function Nav () {
                         Leader Board
                     </NavLink>
                 </li>
+
             </ul>
         </nav>
     )
 }
+

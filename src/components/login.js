@@ -6,7 +6,7 @@ import { setAuthedUser } from "../actions/authedUser";
 class Login extends Component {
 
     state = {
-        user: this.props.authedUser
+        user: "sarahedo"
     }
 
     handleChange = (e) => {
