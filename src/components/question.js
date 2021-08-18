@@ -45,7 +45,7 @@ class Question extends Component {
                                     </Row>
                                     <Row>
                                         <Col>
-                                            <Link to={`/question/${id}`} className="question-botton">View Poll</Link>
+                                            <Link to={`/questions/${id}`} className="question-botton">View Poll</Link>
                                         </Col>
                                     </Row>
                                 </Col>

@@ -7,11 +7,12 @@ export default function users(state = {}, action) {
                 ...state,
                 ...action.users,
             }
-        // case ADD_QUESTION:
-        //     return {
-        //         ...state,
-        //         [action.question.id]: action.question,
-        //     }
+        case ADD_QUESTION:
+            console.log("Action", action)
+            return {
+                ...state,
+                ...state[action.question.author].questions.push(action.question.id)
+            }
         case UPDATE_USER_ANSWERS:
             const newState = { ...state }
 

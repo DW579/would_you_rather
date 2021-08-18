@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, useLocation } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleInitialData } from "./actions/shared";
 import Dashboard from "./components/dashboard";
@@ -11,7 +11,12 @@ import Leaderboard from "./components/leaderboard";
 import Login from "./components/login";
 import Nav from "./components/nav";
 import Account from "./components/account";
-import NoMatch from "./components/no_match";
+
+const NoMatch = () => {
+    const { pathname } = useLocation()
+
+    return <h3>404 Page Error!</h3>
+}
 
 class App extends Component {
     componentDidMount() {
@@ -26,18 +31,26 @@ class App extends Component {
               <Container>
                 <Row>
                   <Col>
+                  {this.props.loading === false && 
+                    <Nav />}
+                    
+                    {this.props.loading === false && 
+                    <Account />}
+                    
                     {this.props.loading === true
                       ? <Login />
-                      : <div>
-                          <Nav />
-                          <Account />
-                          <Route path="/" exact component={Dashboard} />
-                          <Route path="/questions/:id" component={QuestionPage} />
-                          <Route path="/add" component={NewQuestion} />
-                          <Route path="/leaderboard" component={Leaderboard} />
-                          <Route path="/login" component={Login} />
-                          <Route path="*" component={NoMatch} />
-                        </div>}
+                      : 
+                        <Switch>
+                            <Route exact path="/" component={Dashboard} />
+                            <Route path="/questions/:id" component={QuestionPage} />
+                            <Route path="/add" component={NewQuestion} />
+                            <Route path="/leaderboard" component={Leaderboard} />
+                            <Route path="/login" component={Login} />
+                            <Route path='*'>
+                                <NoMatch />
+                            </Route>
+                        </Switch>
+                    }
                   </Col>
                 </Row>
               </Container>
