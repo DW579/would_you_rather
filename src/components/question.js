@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formatQuestion } from "../utils/helpers";
 import { Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 class Question extends Component {
     render() {
@@ -44,7 +45,7 @@ class Question extends Component {
                                     </Row>
                                     <Row>
                                         <Col>
-                                            <button className="question-botton" onClick={() => console.log("Question ID: ", id)}>View Poll</button>
+                                            <Link to={`/question/${id}`} className="question-botton">View Poll</Link>
                                         </Col>
                                     </Row>
                                 </Col>
