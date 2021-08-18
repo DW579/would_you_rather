@@ -3,7 +3,7 @@ import { Row, Col, ProgressBar } from "react-bootstrap";
 
 class AnsweredQuestion extends Component {
     render() {
-        const { id, name, avatar, optionOne, optionTwo} = this.props;
+        const { name, avatar, optionOne, optionTwo} = this.props;
         const barMax = optionOne.count + optionTwo.count;
 
         return (

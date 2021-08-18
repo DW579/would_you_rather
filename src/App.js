@@ -25,7 +25,7 @@ class App extends Component {
                 <Row>
                   <Col>
                     {this.props.loading === true
-                      ? null
+                      ? <Login />
                       : <div>
                           <Nav />
                           <Route path="/" exact component={Dashboard} />
@@ -34,14 +34,6 @@ class App extends Component {
                           <Route path="/leader_board" component={Leaderboard} />
                           <Route path="/login" component={Login} />
                         </div>}
-                    {/* {this.props.loading === true
-                      ? null
-                      : <QuestionPage match={{ params: { id: "vthrdm985a262al8qx3do" }}} />} */}
-                      {/* {
-                        this.props.loading === true
-                        ? null
-                        : <Login />
-                      } */}
                   </Col>
                 </Row>
               </Container>

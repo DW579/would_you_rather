@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 import { Row, Col } from "react-bootstrap";
+import { handleAnswerQuestion } from "../actions/questions";
+import { handleUpdateUserAnswers } from "../actions/users";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 class AskQuestion extends Component {
     state = {
-        optionSelected: null
+        optionSelected: null,
+        toHome: false
     }
 
     handleChange = (e) => {
@@ -15,11 +20,34 @@ class AskQuestion extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log(this.state.optionSelected)
+        if(this.state.optionSelected !== null) {
+            const { dispatch, id, authedUser } = this.props;
+            
+            const answer = this.state.optionSelected;
+            const qid = id;
+
+            const data = {
+                authedUser,
+                qid,
+                answer
+            }
+
+            dispatch(handleUpdateUserAnswers(data));
+
+            this.setState(() => ({
+                optionSelected: null,
+                toHome: true
+            }))
+        }
     }
     
     render() {
-        const { name, avatar, optionOne, optionTwo } = this.props;
+        const { name, avatar, optionOne, optionTwo, id } = this.props;
+        const { toHome } = this.state;
+
+        if (toHome === true) {
+            return <Redirect to="/" />
+        }
 
         return (
             <Row>
@@ -52,12 +80,12 @@ class AskQuestion extends Component {
                                     <Row className="margin-bottom">
                                         <Col>
                                             <form onSubmit={this.handleSubmit}>
-                                                <input type="radio" id="optionOne" name="questions" value="1" onChange={this.handleChange} />
+                                                <input type="radio" id="optionOne" name="questions" value="optionOne" onChange={this.handleChange} />
                                                 <label htmlFor="optionOne">{optionOne.text}</label>
 
                                                 <br />
 
-                                                <input type="radio" id="optionTwo" name="questions" value="2" onChange={this.handleChange} />
+                                                <input type="radio" id="optionTwo" name="questions" value="optionTwo" onChange={this.handleChange} />
                                                 <label htmlFor="optionTwo">{optionTwo.text}</label>
 
                                                 <button type="submit" className="question-botton">Submit</button>
@@ -75,4 +103,11 @@ class AskQuestion extends Component {
     }
 }
 
-export default AskQuestion;
+function mapStateToProps ({ authedUser }) {
+
+    return {
+        authedUser
+    }
+}
+
+export default connect(mapStateToProps)(AskQuestion);

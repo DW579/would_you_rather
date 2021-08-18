@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Row, Col } from "react-bootstrap";
+import { setAuthedUser } from "../actions/authedUser";
 
 class Login extends Component {
 
     state = {
-        user: "sarahedo"
+        user: this.props.authedUser
     }
 
     handleChange = (e) => {
@@ -19,7 +20,9 @@ class Login extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log(this.state.user);
+        const { dispatch } = this.props;
+
+        dispatch(setAuthedUser(this.state.user));
     }
 
     render() {
@@ -56,7 +59,7 @@ class Login extends Component {
     }
 }
 
-function mapStateToProps ({ users }) {
+function mapStateToProps ({ users, authedUser }) {
     let usernames = [];
 
     for(const user in users) {
@@ -64,7 +67,8 @@ function mapStateToProps ({ users }) {
     }
 
     return {
-        usernames
+        usernames,
+        authedUser
     }
 }
 

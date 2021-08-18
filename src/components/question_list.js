@@ -63,7 +63,7 @@ class QuestionList extends Component {
     }
 }
 
-function mapStateToProps ({ questions, authedUser }) {
+function mapStateToProps ({ questions, authedUser, users }) {
     let idVotes = [];
 
     for (const [key, value] of Object.entries(questions)) {

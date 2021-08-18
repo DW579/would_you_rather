@@ -32,6 +32,7 @@ class NewQuestion extends Component {
 
         const { text1, text2 } = this.state;
         const { dispatch, id } = this.props;
+        
         const question = {
             text1,
             text2,
