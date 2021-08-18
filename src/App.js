@@ -1,13 +1,15 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleInitialData } from "./actions/shared";
-// import Dashboard from "./components/dashboard";
+import Dashboard from "./components/dashboard";
 import { Container, Row, Col } from "react-bootstrap";
 import LoadingBar from "react-redux-loading";
-// import NewQuestion from "./components/new_question";
-// import QuestionPage from "./components/question_page";
-// import Leaderboard from "./components/leaderboard";
+import NewQuestion from "./components/new_question";
+import QuestionPage from "./components/question_page";
+import Leaderboard from "./components/leaderboard";
 import Login from "./components/login";
+import Nav from "./components/nav";
 
 class App extends Component {
     componentDidMount() {
@@ -16,23 +18,37 @@ class App extends Component {
 
     render() {
         return (
-          <div>
-            <Container>
-              <Row>
-                <Col>
-                  <LoadingBar />
-                  {/* {this.props.loading === true
-                    ? null
-                    : <QuestionPage match={{ params: { id: "vthrdm985a262al8qx3do" }}} />} */}
-                    {
-                      this.props.loading === true
+          <Router>
+            <Fragment>
+              <LoadingBar />
+              <Container>
+                <Row>
+                  <Col>
+                    
+                    {this.props.loading === true
                       ? null
-                      : <Login />
-                    }
-                </Col>
-              </Row>
-            </Container>
-          </div>
+                      : <div>
+                          <Nav />
+                          <Route path="/" exact component={Dashboard} />
+                          <Route path="/question/:id" component={QuestionPage} />
+                          <Route path="/new" component={NewQuestion} />
+                          <Route path="/leader_board" component={Leaderboard} />
+                          <Route path="/login" component={Login} />
+                        </div>}
+                    {/* {this.props.loading === true
+                      ? null
+                      : <QuestionPage match={{ params: { id: "vthrdm985a262al8qx3do" }}} />} */}
+                      {/* {
+                        this.props.loading === true
+                        ? null
+                        : <Login />
+                      } */}
+                  </Col>
+                </Row>
+              </Container>
+            </Fragment>
+          </Router>
+
         )
     }
 }
