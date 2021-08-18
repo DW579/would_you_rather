@@ -32,8 +32,8 @@ class App extends Component {
                           <Account />
                           <Route path="/" exact component={Dashboard} />
                           <Route path="/question/:id" component={QuestionPage} />
-                          <Route path="/new" component={NewQuestion} />
-                          <Route path="/leader_board" component={Leaderboard} />
+                          <Route path="/add" component={NewQuestion} />
+                          <Route path="/leaderboard" component={Leaderboard} />
                           <Route path="/login" component={Login} />
                         </div>}
                   </Col>

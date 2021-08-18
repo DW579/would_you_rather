@@ -13,6 +13,7 @@ class Account extends Component {
 
     render() {
         const { authedUser } = this.props;
+        
 
         return(
             <div>
