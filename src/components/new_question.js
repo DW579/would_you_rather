@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import { Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 import { handleAddQuestion } from "../actions/questions";
+import { Redirect } from "react-router-dom";
 
 class NewQuestion extends Component {
     state = {
         text1: "",
-        text2: ""
+        text2: "",
+        toHome: false
     }
 
     handleChange1 = (e) => {
@@ -40,14 +42,17 @@ class NewQuestion extends Component {
 
         this.setState(() => ({
             text1: "",
-            text2: ""
+            text2: "",
+            toHome: id ? false : true
         }))
     }
 
     render() {
-        const { text1, text2 } = this.state;
+        const { text1, text2, toHome } = this.state;
 
-        // todo: Redirect to / if submitted
+        if (toHome === true) {
+            return <Redirect to="/" />
+        }
 
         return (
             <Row>

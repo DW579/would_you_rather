@@ -24,7 +24,6 @@ class App extends Component {
               <Container>
                 <Row>
                   <Col>
-                    
                     {this.props.loading === true
                       ? null
                       : <div>
