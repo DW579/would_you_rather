@@ -13,25 +13,6 @@ export default function questions(state = {}, action) {
                 ...state,
                 [action.question.id]: action.question,
             }
-        // case ANSWER_QUESTION:
-        //     const {authedUser,qid,answer} = action.answer
-
-        //     return {
-        //         // ...state,
-        //         // [action.authedUser]: {
-        //         //     ...state[action.authedUser].answers[action.qid] = [action.answer],
-        //         // } 
-
-        //         ...state,
-        //         [qid]: {
-        //           ...state[qid],
-        //           [answer]: {
-        //             ...state[qid][answer],
-        //             votes: state[qid][answer].votes.concat([authedUser])
-        //           }
-        //         }
-                
-        //     }
 
         case UPDATE_USER_ANSWERS:
             const {authedUser,qid,answer} = action

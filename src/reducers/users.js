@@ -9,9 +9,6 @@ export default function users(state = {}, action) {
             }
         case ADD_QUESTION:
             return {
-                // ...state,
-                // ...state[action.question.author].questions.push(action.question.id)
-
                 ...state,
                 [action.question.author]: {
                     ...state[action.question.author],
@@ -19,13 +16,6 @@ export default function users(state = {}, action) {
                 }
             }
         case UPDATE_USER_ANSWERS:
-            // const newState = { ...state }
-
-            // newState[action.authedUser].answers[action.qid] = action.answer
-
-            // return newState
-
-console.log(action)
             return {
                 ...state,
                 [action.authedUser]: {
