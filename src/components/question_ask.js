@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Row, Col } from "react-bootstrap";
-import { handleAnswerQuestion } from "../actions/questions";
 import { handleUpdateUserAnswers } from "../actions/users";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
@@ -42,7 +41,7 @@ class AskQuestion extends Component {
     }
     
     render() {
-        const { name, avatar, optionOne, optionTwo, id } = this.props;
+        const { name, avatar, optionOne, optionTwo } = this.props;
         const { toHome } = this.state;
 
         if (toHome === true) {

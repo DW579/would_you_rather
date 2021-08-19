@@ -8,17 +8,28 @@ export default function users(state = {}, action) {
                 ...action.users,
             }
         case ADD_QUESTION:
-            console.log("Action", action)
             return {
                 ...state,
                 ...state[action.question.author].questions.push(action.question.id)
             }
         case UPDATE_USER_ANSWERS:
-            const newState = { ...state }
+            // const newState = { ...state }
 
-            newState[action.authedUser].answers[action.qid] = action.answer
+            // newState[action.authedUser].answers[action.qid] = action.answer
 
-            return newState
+            // return newState
+
+console.log(action)
+            return {
+                ...state,
+                [action.authedUser]: {
+                  ...state[action.authedUser],
+                  answers: {
+                    ...state[action.authedUser].answers,
+                    [action.qid]: action.answer
+                  }
+                }
+            }
         default:
             return state;
     }

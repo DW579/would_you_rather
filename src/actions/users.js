@@ -12,13 +12,6 @@ export function receiveUsers(users) {
     };
 }
 
-function addQuestion (question) {
-    return {
-        type: ADD_QUESTION,
-        question
-    }
-}
-
 function updateUserAnswer ({ authedUser, qid, answer}) {
     return {
         type: UPDATE_USER_ANSWERS,

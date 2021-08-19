@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { BrowserRouter as Router, Route, Switch, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleInitialData } from "./actions/shared";
 import Dashboard from "./components/dashboard";
@@ -13,8 +13,6 @@ import Nav from "./components/nav";
 import Account from "./components/account";
 
 const NoMatch = () => {
-    const { pathname } = useLocation()
-
     return <h3>404 Page Error!</h3>
 }
 
