@@ -9,8 +9,14 @@ export default function users(state = {}, action) {
             }
         case ADD_QUESTION:
             return {
+                // ...state,
+                // ...state[action.question.author].questions.push(action.question.id)
+
                 ...state,
-                ...state[action.question.author].questions.push(action.question.id)
+                [action.question.author]: {
+                    ...state[action.question.author],
+                    questions: state[action.question.author].questions.concat(action.question.id)
+                }
             }
         case UPDATE_USER_ANSWERS:
             // const newState = { ...state }

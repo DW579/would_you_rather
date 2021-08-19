@@ -21,19 +21,22 @@ class QuestionList extends Component {
     }
 
     render() {
-        let unanswered_ids = [];
-        let answered_ids = [];
-        const idVotes = this.props.idVotes;
-        const authedUser = this.props.authedUser;
+        // let unanswered_ids = [];
+        // let answered_ids = [];
+        // const idVotes = this.props.idVotes;
+        // const authedUser = this.props.authedUser;
 
-        for(let i = 0; i < idVotes.length; i++) {
-            if(idVotes[i][1].find(user => user === authedUser) === undefined) {
-                unanswered_ids.push(idVotes[i][0]);
-            }
-            else {
-                answered_ids.push(idVotes[i][0]);
-            }
-        }
+        // for(let i = 0; i < idVotes.length; i++) {
+        //     if(idVotes[i][1].find(user => user === authedUser) === undefined) {
+        //         unanswered_ids.push(idVotes[i][0]);
+        //     }
+        //     else {
+        //         answered_ids.push(idVotes[i][0]);
+        //     }
+        // }
+
+        const {answered_ids, unanswered_ids} = this.props
+
 
         return (
             <Row>
@@ -63,18 +66,30 @@ class QuestionList extends Component {
     }
 }
 
+// function mapStateToProps ({ questions, authedUser, users }) {
+//     let idVotes = [];
+
+//     for (const [key, value] of Object.entries(questions)) {
+//         const votes = value.optionOne.votes.concat(value.optionTwo.votes);
+
+//         idVotes.push([key, votes]);
+//     }
+
+//     return {
+//         idVotes,
+//         authedUser
+//     }
+// }
+
 function mapStateToProps ({ questions, authedUser, users }) {
-    let idVotes = [];
-
-    for (const [key, value] of Object.entries(questions)) {
-        const votes = value.optionOne.votes.concat(value.optionTwo.votes);
-
-        idVotes.push([key, votes]);
-    }
-
+    const answered_ids = Object.keys(users[authedUser].answers)
+                               .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
+    const unanswered_ids = Object.keys(questions)
+                                 .filter(questionKey => !answered_ids.includes(questionKey))
+                                 .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
     return {
-        idVotes,
-        authedUser
+        answered_ids,
+        unanswered_ids
     }
 }
 
